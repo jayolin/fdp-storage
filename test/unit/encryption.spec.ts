@@ -1,5 +1,5 @@
 import { decryptText, encryptText } from '../../src/account/encryption'
-import CryptoJS from 'crypto-js'
+import CryptoJS from 'crypto-es'
 import { generateRandomHexString } from '../utils'
 
 describe('encryption', () => {
