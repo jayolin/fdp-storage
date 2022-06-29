@@ -3,7 +3,7 @@ import { bmtHash } from '../chunk/bmt'
 import { makeSpan, stringToBytes, wrapBytesWithHelpers } from '../utils/bytes'
 import { AccountData } from './account-data'
 import { isValidMnemonic } from 'ethers/lib/utils'
-import CryptoJS from 'crypto-js'
+import CryptoJS from 'crypto-es'
 import { replaceAll } from '../utils/string'
 import { assertString } from '../utils/type'
 
@@ -18,7 +18,7 @@ export const CHUNK_SIZE = 4096
  * @param data input data to encode
  */
 export function encodeBase64Url(data: CryptoJS.lib.WordArray): string {
-  const base64url = data.toString(CryptoJS.enc.Base64url)
+  const base64url = data.toString(CryptoJS.enc.Base64)
   const paddingNumber = base64url.length % 4
   let padding = ''
 
@@ -37,7 +37,7 @@ export function encodeBase64Url(data: CryptoJS.lib.WordArray): string {
  * @param data Base64Url data
  */
 export function decodeBase64Url(data: string): CryptoJS.lib.WordArray {
-  return CryptoJS.enc.Base64url.parse(replaceAll(data, '=', ''))
+  return CryptoJS.enc.Base64.parse(replaceAll(data, '=', ''))
 }
 
 /**
